@@ -1,0 +1,1637 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  <title>Priyanshu Kumar Srivastav | Embedded Systems & IoT Engineer</title>
+  <meta name="description" content="Electronics and Communication Engineering student with deep expertise in Embedded Systems, IoT, and Digital Design. Experienced in microcontroller-based system design, sensor interfacing, firmware development, and real-time embedded architectures.">
+  <meta name="keywords" content="Python, Full-Stack, Portfolio, FastAPI, Flask, Web Developer, Software Engineer, UI/UX, Dark Purple Theme">
+  <meta name="author" content="Priyanshu Kumar Srivastav">
+  <meta name="theme-color" content="#090714">
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Priyanshu Kumar Srivastav | Embedded Systems & IoT Engineer">
+  <meta property="og:description" content="Electronics and Communication Engineering student with deep expertise in Embedded Systems, IoT, and Digital Design. Experienced in microcontroller-based system design, sensor interfacing, firmware development, and real-time embedded architectures.">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="static/assets/favicon.svg">
+
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Core Stylesheets -->
+  <link rel="stylesheet" href="static/css/style.css">
+  <link rel="stylesheet" href="static/css/animations.css">
+</head>
+<body>
+
+  <!-- Top Scroll Progress Indicator -->
+  <div class="scroll-progress-bar" id="scrollProgress"></div>
+
+  <!-- Interactive Cursor Spotlight Tracker -->
+  <div class="cursor-spotlight"></div>
+
+  <!-- Background Particle Constellation Canvas -->
+  <canvas id="particle-canvas"></canvas>
+
+  <!-- Ambient Glowing Violet Orbs in Background -->
+  <div class="ambient-orb orb-1"></div>
+  <div class="ambient-orb orb-2"></div>
+  <div class="ambient-orb orb-3"></div>
+
+  <!-- ==========================================================================
+       NAVIGATION BAR
+       ========================================================================== -->
+  <header class="site-header" id="siteHeader">
+    <div class="container nav-container">
+      <a href="#home" class="brand-logo" aria-label="Home">
+        <span class="logo-bracket">&lt;</span>
+        <span class="logo-text">Priyanshu.py</span>
+        <span class="logo-bracket">/&gt;</span>
+        <span class="logo-tag">v2.0</span>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="nav-menu" aria-label="Main Navigation">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#about" class="nav-link">About Me</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#education" class="nav-link">Education</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+
+      <!-- Desktop Nav Actions -->
+      <div class="nav-actions">
+        <!-- Theme Toggle Button -->
+        <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle Light/Dark Theme" title="Toggle Light/Dark Mode">
+          <i class="fa-solid fa-moon moon-icon"></i>
+          <i class="fa-solid fa-sun sun-icon"></i>
+        </button>
+
+        <!-- Resume Download Button -->
+        <a href="static/assets/Priyanshu_Kumar_Srivastav_Resume.pdf" download="Priyanshu_Kumar_Srivastav_Resume.pdf" class="btn btn-resume btn-sm" title="Download Official Resume PDF">
+          <i class="fa-solid fa-file-arrow-down"></i>
+          <span>Resume</span>
+        </a>
+
+        <div class="status-badge" title="Status: Active">
+          <span class="status-dot"></span>
+          <span>Available</span>
+        </div>
+        <a href="#contact" class="btn btn-primary btn-sm">
+          <span>Let's Talk</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger Button -->
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Backdrop & Menu -->
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+  <div class="mobile-drawer" id="mobileDrawer">
+    <div class="mobile-drawer-top">
+      <div class="brand-logo" style="margin-bottom: 30px;">
+        <span class="logo-bracket">&lt;</span>
+        <span class="logo-text">Priyanshu.py</span>
+        <span class="logo-bracket">/&gt;</span>
+      </div>
+      <nav class="mobile-nav-links">
+        <a href="#home" class="mobile-nav-link active">
+          <span>Home</span>
+          <i class="fa-solid fa-chevron-right"></i>
+        </a>
+        <a href="#about" class="mobile-nav-link">
+          <span>About Me</span>
+          <i class="fa-solid fa-chevron-right"></i>
+        </a>
+        <a href="#skills" class="mobile-nav-link">
+          <span>Skills</span>
+          <i class="fa-solid fa-chevron-right"></i>
+        </a>
+        <a href="#projects" class="mobile-nav-link">
+          <span>Projects</span>
+          <i class="fa-solid fa-chevron-right"></i>
+        </a>
+        <a href="#education" class="mobile-nav-link">
+          <span>Education</span>
+          <i class="fa-solid fa-chevron-right"></i>
+        </a>
+        <a href="#contact" class="mobile-nav-link">
+          <span>Contact</span>
+          <i class="fa-solid fa-chevron-right"></i>
+        </a>
+      </nav>
+    </div>
+    <div class="mobile-drawer-bottom">
+      <a href="static/assets/Priyanshu_Kumar_Srivastav_Resume.pdf" download="Priyanshu_Kumar_Srivastav_Resume.pdf" class="btn btn-resume" style="width: 100%; margin-bottom: 12px;">
+        <i class="fa-solid fa-file-arrow-down"></i>
+        <span>Download Resume (PDF)</span>
+      </a>
+      <a href="#contact" class="btn btn-primary" style="width: 100%; margin-bottom: 16px;">
+        <i class="fa-solid fa-paper-plane"></i>
+        <span>Get in Touch</span>
+      </a>
+      <div class="status-badge" style="justify-content: center;">
+        <span class="status-dot"></span>
+        <span>Available for Embedded Systems & IoT Roles</span>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- ==========================================================================
+         SECTION 1: HOME (HERO)
+         ========================================================================== -->
+    <section class="section hero-section" id="home">
+      <div class="container">
+        <div class="hero-grid">
+          
+          <!-- Hero Text & CTA -->
+          <div class="hero-content reveal-init reveal-fade-up">
+            <div class="hero-badge">
+              <i class="fa-solid fa-microchip" style="color: var(--blue-accent);"></i>
+              <span>Embedded Systems &amp; IoT Architecture</span>
+            </div>
+            
+            <h1 class="hero-title">
+              Hi, I'm <span class="gradient-text">Priyanshu Kumar Srivastav</span>
+            </h1>
+
+            <div class="typewriter-wrapper">
+              <span class="typewriter-prefix">I am a</span>
+              <span class="typewriter-text" id="typewriter" data-roles='["Embedded Systems Engineer", "Firmware \u0026 IoT Developer", "STM32 \u0026 Microcontroller Specialist", "Hardware-Software Integration Specialist"]'></span>
+              <span class="typewriter-cursor">|</span>
+            </div>
+
+            <p class="hero-description">
+              Electronics and Communication Engineering student with deep expertise in Embedded Systems, IoT, and Digital Design. Experienced in microcontroller-based system design, sensor interfacing, firmware development, and real-time embedded architectures.
+            </p>
+
+            <div class="hero-cta-group">
+              <a href="#projects" class="btn btn-primary">
+                <span>Explore Work</span>
+                <i class="fa-solid fa-arrow-down"></i>
+              </a>
+              <a href="static/assets/Priyanshu_Kumar_Srivastav_Resume.pdf" download="Priyanshu_Kumar_Srivastav_Resume.pdf" class="btn btn-resume" title="Download Official Resume PDF">
+                <i class="fa-solid fa-file-arrow-down"></i>
+                <span>Download Resume</span>
+              </a>
+              <a href="#contact" class="btn btn-secondary">
+                <i class="fa-solid fa-envelope"></i>
+                <span>Get In Touch</span>
+              </a>
+            </div>
+
+            <div class="hero-socials">
+              <span class="social-label">Connect:</span>
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn-icon-only" aria-label="GitHub Profile">
+                <i class="fa-brands fa-github"></i>
+              </a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="btn-icon-only" aria-label="LinkedIn Profile">
+                <i class="fa-brands fa-linkedin-in"></i>
+              </a>
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="btn-icon-only" aria-label="Twitter Profile">
+                <i class="fa-brands fa-x-twitter"></i>
+              </a>
+              <a href="https://discord.com" target="_blank" rel="noopener noreferrer" class="btn-icon-only" aria-label="Discord">
+                <i class="fa-brands fa-discord"></i>
+              </a>
+              <a href="https://kaggle.com" target="_blank" rel="noopener noreferrer" class="btn-icon-only" aria-label="Kaggle / Data">
+                <i class="fa-brands fa-kaggle"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Hero Photograph Area (Beside the Name) -->
+          <div class="hero-photo-column reveal-init reveal-scale delay-200">
+            <div class="hero-photo-card tilt-effect">
+              <!-- Glow Aura Behind Photo -->
+              <div class="photo-glow-aura"></div>
+
+              <!-- Main Photograph Frame -->
+              <div class="photo-frame-wrapper">
+                <img src="static/assets/profile.jpg" onerror="this.onerror=null; this.src='static/assets/avatar.svg';" alt="Priyanshu Kumar Srivastav Photograph" class="hero-photo-img" id="heroPhotoImg">
+                
+                <!-- Quick Upload / Preview Trigger -->
+                <label for="photoUploadInput" class="photo-overlay-action" title="Click to preview your photograph immediately">
+                  <i class="fa-solid fa-camera"></i>
+                  <span>Upload Photo</span>
+                </label>
+                <input type="file" id="photoUploadInput" accept="image/*" style="display: none;">
+              </div>
+
+              <!-- Floating Experience Badge -->
+              <div class="photo-floating-pill pill-top-right">
+                <i class="fa-solid fa-code" style="color: var(--blue-accent);"></i>
+                <span>2+ Yrs Experience</span>
+              </div>
+
+              <!-- Floating Available Badge -->
+              <div class="photo-floating-pill pill-bottom-left">
+                <span class="status-dot"></span>
+                <span>Available for Hire</span>
+              </div>
+
+              <!-- Name & Title Tag directly below photo -->
+              <div class="photo-caption-bar">
+                <div class="photo-caption-name">Priyanshu Kumar Srivastav</div>
+                <div class="photo-caption-role">Embedded Systems & IoT Engineer</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Live Metrics Counter Bar -->
+        <div class="hero-stats-bar reveal-init reveal-fade-up delay-300">
+          <div class="stat-item">
+            <span class="stat-number">2+</span>
+            <span class="stat-label">Years of Professional Experience</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">12+</span>
+            <span class="stat-label">Production Projects Shipped</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">99.9%</span>
+            <span class="stat-label">API Architecture Reliability</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">500+</span>
+            <span class="stat-label">Verified Open-Source Commits</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 2: ABOUT ME
+         ========================================================================== -->
+    <section class="section" id="about">
+      <div class="container">
+        
+        <div class="section-header reveal-init reveal-fade-up">
+          <span class="section-tag">// 01. ABOUT ME</span>
+          <h2 class="section-title">
+            Engineering Elegance Meets <span class="gradient-text">Modern Performance</span>
+          </h2>
+          <p class="section-subtitle">
+            A developer who believes scalable architecture and refined design are two sides of the same coin.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          
+          <!-- Left Column: Portrait & Badges -->
+          <div class="about-visual-col reveal-init reveal-fade-right">
+            <div class="avatar-card tilt-effect">
+              <div class="avatar-img-wrapper">
+                <img src="static/assets/avatar.svg" alt="Priyanshu Kumar Srivastav Developer Portrait" loading="lazy">
+              </div>
+              <div class="avatar-quick-badges">
+                <span class="avatar-pill"><i class="fa-solid fa-microchip"></i> Embedded C</span>
+                <span class="avatar-pill"><i class="fa-solid fa-bolt"></i> STM32 &amp; ARM</span>
+                <span class="avatar-pill"><i class="fa-solid fa-wifi"></i> IoT &amp; ESP32</span>
+                <span class="avatar-pill"><i class="fa-brands fa-raspberry-pi"></i> Raspberry Pi</span>
+                <span class="avatar-pill"><i class="fa-solid fa-diagram-project"></i> UART/SPI/I2C</span>
+              </div>
+            </div>
+            <a href="static/assets/Priyanshu_Kumar_Srivastav_Resume.pdf" download="Priyanshu_Kumar_Srivastav_Resume.pdf" class="btn btn-resume" style="width: 100%; margin-top: 16px;">
+              <i class="fa-solid fa-file-arrow-down"></i>
+              <span>Download Official Resume (.PDF)</span>
+            </a>
+          </div>
+
+          <!-- Right Column: Narrative & Values -->
+          <div class="about-content-col reveal-init reveal-fade-left delay-100">
+            <div class="about-narrative">
+              <p class="about-lead">
+                Bridging hardware circuits and firmware with precision Embedded C & Microcontroller architectures.
+              </p>
+              
+              <p class="about-text">I am an Electronics and Communication Engineering student at Mahatma Jyotiba Phule Rohilkhand University with a passionate drive for Embedded Systems, IoT, and Digital Design.</p>
+              
+              <p class="about-text">Having worked as an Embedded Systems Intern at Virtual Forest Private Limited, I specialize in developing microcontroller-based systems using Embedded C, Arduino, STM32, and Raspberry Pi. My technical expertise spans sensor interfacing, hardware-software integration, low-level firmware development, and real-time embedded system design.</p>
+              
+              <p class="about-text">As President of the Embedronics Club, I regularly organize technical workshops on Embedded Systems and IoT, mentoring fellow students in microcontroller programming, circuit analysis, and hardware prototyping.</p>
+              
+            </div>
+
+            <!-- Philosophy Cards -->
+            <div class="philosophy-grid">
+              
+              <div class="philosophy-card">
+                <div class="card-icon-box">
+                  
+                    <i class="fa-solid fa-code"></i>
+                  
+                </div>
+                <h3 class="philosophy-title">Firmware & Embedded C</h3>
+                <p class="philosophy-desc">Writing robust, deterministic low-level firmware in Embedded C, C, and Python for ARM Cortex-M, STM32, and AVR microcontrollers.</p>
+              </div>
+              
+              <div class="philosophy-card">
+                <div class="card-icon-box">
+                  
+                    <i class="fa-solid fa-bolt"></i>
+                  
+                </div>
+                <h3 class="philosophy-title">Microcontrollers & IoT</h3>
+                <p class="philosophy-desc">Developing real-time systems using STM32, ESP32, Arduino, and Raspberry Pi with sensors and wireless communication.</p>
+              </div>
+              
+              <div class="philosophy-card">
+                <div class="card-icon-box">
+                  
+                    <i class="fa-solid fa-layer-group"></i>
+                  
+                </div>
+                <h3 class="philosophy-title">Hardware-Software Integration</h3>
+                <p class="philosophy-desc">Mastering communication protocols including UART, SPI, and I2C for peripheral control, data acquisition, and module bridging.</p>
+              </div>
+              
+              <div class="philosophy-card">
+                <div class="card-icon-box">
+                  
+                    <i class="fa-solid fa-shield-heart"></i>
+                  
+                </div>
+                <h3 class="philosophy-title">Testing, Debugging & PCB</h3>
+                <p class="philosophy-desc">Validating prototypes using STM32CubeIDE, EasyEDA, Proteus simulation, logic analyzers, and hardware debugging tools.</p>
+              </div>
+              
+            </div>
+
+            <!-- Terminal Info Snippet -->
+            <div class="terminal-snippet-box">
+              
+              <div class="terminal-line">
+                <span class="prompt-sign">priyanshu@embedded-core:~$</span>
+                <span class="prompt-output">stm32flash -w firmware.bin -v /dev/ttyUSB0</span>
+              </div>
+              
+              <div class="terminal-line">
+                <span class="prompt-sign">status:</span>
+                <span class="prompt-output">Flash Verified • Clock: 72MHz • Peripherals Online</span>
+              </div>
+              
+              <div class="terminal-line">
+                <span class="prompt-sign">protocols:</span>
+                <span class="prompt-output">['UART', 'SPI', 'I2C', 'PWM', 'FreeRTOS']</span>
+              </div>
+              
+              <div class="terminal-line">
+                <span class="prompt-sign">target_mcu:</span>
+                <span class="prompt-output">STM32F103 / ESP32 / Raspberry Pi</span>
+              </div>
+              
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 3: SKILLS
+         ========================================================================== -->
+    <section class="section" id="skills">
+      <div class="container">
+        
+        <div class="section-header reveal-init reveal-fade-up">
+          <span class="section-tag">// 02. COMPETENCIES</span>
+          <h2 class="section-title">
+            Technical Stack &amp; <span class="gradient-text">Proficiencies</span>
+          </h2>
+          <p class="section-subtitle">
+            A comprehensive, modern engineering toolkit honed through production environments and real-world scale.
+          </p>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="skills-filter-nav reveal-init reveal-fade-up">
+          <button class="skill-tab-btn active" data-filter="all">All Disciplines</button>
+          <button class="skill-tab-btn" data-filter="programming-languages">Programming &amp; Firmware</button>
+          <button class="skill-tab-btn" data-filter="embedded-hardware">Embedded Systems &amp; MCUs</button>
+          <button class="skill-tab-btn" data-filter="tools-protocols">Tools, Protocols &amp; EDA</button>
+        </div>
+
+        <!-- Skills Grid -->
+        <div class="skills-grid">
+          
+          <div class="skill-category-card reveal-init reveal-fade-up" data-category="programming-languages">
+            <div class="category-card-header">
+              <div class="category-icon">
+                
+                  <i class="fa-solid fa-database"></i>
+                
+              </div>
+              <h3 class="category-title">Programming & Firmware</h3>
+            </div>
+
+            <div class="skill-items-list">
+              
+              <div class="skill-item">
+                <div class="skill-item-header">
+                  <span class="skill-name">Embedded C</span>
+                  <span class="skill-badge-pill">Core Strength</span>
+                </div>
+                <div class="skill-progress-bar-track" title="94% Proficiency">
+                  <div class="skill-progress-bar-fill" data-level="94"></div>
+                </div>
+              </div>
+              
+              <div class="skill-item">
+                <div class="skill-item-header">
+                  <span class="skill-name">C Programming</span>
+                  <span class="skill-badge-pill">Proficient</span>
+                </div>
+                <div class="skill-progress-bar-track" title="92% Proficiency">
+                  <div class="skill-progress-bar-fill" data-level="92"></div>
+                </div>
+              </div>
+              
+              <div class="skill-item">
+                <div class="skill-item-header">
+                  <span class="skill-name">C++</span>
+                  <span class="skill-badge-pill">Intermediate</span>
+                </div>
+                <div class="skill-progress-bar-track" title="85% Proficiency">
+                  <div class="skill-progress-bar-fill" data-level="85"></div>
+                </div>
+              </div>
+              
+              <div class="skill-item">
+                <div class="skill-item-header">
+                  <span class="skill-name">Python (Hardware & Scripts)</span>
+                  <span class="skill-badge-pill">Advanced</span>
+                </div>
+                <div class="skill-progress-bar-track" title="88% Proficiency">
+                  <div class="skill-progress-bar-fill" data-level="88"></div>
+                </div>
+              </div>
+              
+              <div class="skill-item">
+                <div class="skill-item-header">
+                  <span class="skill-name">FreeRTOS Basics</span>
+                  <span class="skill-badge-pill">Applied</span>
+                </div>
+                <div class="skill-progress-bar-track" title="82% Proficiency">
+                  <div class="skill-progress-bar-fill" data-level="82"></div>
+                </div>
+              </div>
+              
+              <div class="skill-item">
+                <div class="skill-item-header">
+                  <span class="skill-name">Digital Logic & Registers</span>
+                  <span class="skill-badge-pill">Strong</span>
+                </div>
+                <div class="skill-progress-bar-track" title="90% Proficiency">
+                  <div class="skill-progress-bar-fill" data-level="90"></div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+          
+          <div class="skill-category-card reveal-init reveal-fade-up" data-category="embedded-hardware">
+            <div class="category-card-header">
+              <div class="category-icon">
+                
+                  <i class="fa-solid fa-database"></i>
+                
+              </div>
+              <h3 class="category-title">Embedded Systems & MCUs</h3>
+            </div>
+
+            <div class="skill-items-list">
+              
+              <div class="skill-item">
+                <div class="skill-item-header">
+                  <span class="skill-name">STM32 (ARM Cortex-M)</span>
+                  <span class="skill-badge-pill">Advanced</span>
+                </div>
+                <div class="skill-progress-bar-track" title="92% Proficiency">
+                  <div class="skill-progress-bar-fill" data-level="92"></div>
+                </div>
+              </div>
+              
+              <div class="skill-item">
+                <div class="skill-item-header">
+                  <span class="skill-name">Arduino UNO / Nano</span>
+                  <span class="skill-badge-pill">Expert</span>
+                </div>
+                <div class="skill-progress-bar-track" title="95% Proficiency">
+                  <div class="skill-progress-bar-fill" data-level="95"></div>
+                </div>
+              </div>
+              
+              <div class="skill-item">
+                <div class="skill-item-header">
+                  <span class="skill-name">ESP32 & IoT Systems</span>
+                  <span class="skill-badge-pill">Advanced</span>
+                </div>
+                <div class="skill-progress-bar-track" title="90% Proficiency">
+                  <div class="skill-progress-bar-fill" data-level="90"></div>
+                </div>
+              </div>
+              
+              <div class="skill-item">
+                <div class="skill-item-header">
+                  <span class="skill-name">Raspberry Pi</span>
+                  <span class="skill-badge-pill">Proficient</span>
+                </div>
+                <div class="skill-progress-bar-track" title="88% Proficiency">
+                  <div class="skill-progress-bar-fill" data-level="88"></div>
+                </div>
+              </div>
+              
+              <div class="skill-item">
+                <div class="skill-item-header">
+                  <span class="skill-name">Infineon iMotion Link & MCUs</span>
+                  <span class="skill-badge-pill">Specialized</span>
+                </div>
+                <div class="skill-progress-bar-track" title="86% Proficiency">
+                  <div class="skill-progress-bar-fill" data-level="86"></div>
+                </div>
+              </div>
+              
+              <div class="skill-item">
+                <div class="skill-item-header">
+                  <span class="skill-name">Sensor Interfacing (ADC, DAC)</span>
+                  <span class="skill-badge-pill">Expert</span>
+                </div>
+                <div class="skill-progress-bar-track" title="94% Proficiency">
+                  <div class="skill-progress-bar-fill" data-level="94"></div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+          
+          <div class="skill-category-card reveal-init reveal-fade-up" data-category="tools-protocols">
+            <div class="category-card-header">
+              <div class="category-icon">
+                
+                  <i class="fa-solid fa-database"></i>
+                
+              </div>
+              <h3 class="category-title">Tools, Protocols & EDA</h3>
+            </div>
+
+            <div class="skill-items-list">
+              
+              <div class="skill-item">
+                <div class="skill-item-header">
+                  <span class="skill-name">Communication: UART, SPI, I2C</span>
+                  <span class="skill-badge-pill">Mastery</span>
+                </div>
+                <div class="skill-progress-bar-track" title="95% Proficiency">
+                  <div class="skill-progress-bar-fill" data-level="95"></div>
+                </div>
+              </div>
+              
+              <div class="skill-item">
+                <div class="skill-item-header">
+                  <span class="skill-name">STM32CubeIDE & Keil</span>
+                  <span class="skill-badge-pill">Advanced</span>
+                </div>
+                <div class="skill-progress-bar-track" title="90% Proficiency">
+                  <div class="skill-progress-bar-fill" data-level="90"></div>
+                </div>
+              </div>
+              
+              <div class="skill-item">
+                <div class="skill-item-header">
+                  <span class="skill-name">Proteus Circuit Simulation</span>
+                  <span class="skill-badge-pill">Proficient</span>
+                </div>
+                <div class="skill-progress-bar-track" title="88% Proficiency">
+                  <div class="skill-progress-bar-fill" data-level="88"></div>
+                </div>
+              </div>
+              
+              <div class="skill-item">
+                <div class="skill-item-header">
+                  <span class="skill-name">EasyEDA & PCB Design Basics</span>
+                  <span class="skill-badge-pill">Applied</span>
+                </div>
+                <div class="skill-progress-bar-track" title="84% Proficiency">
+                  <div class="skill-progress-bar-fill" data-level="84"></div>
+                </div>
+              </div>
+              
+              <div class="skill-item">
+                <div class="skill-item-header">
+                  <span class="skill-name">Git & VS Code</span>
+                  <span class="skill-badge-pill">Proficient</span>
+                </div>
+                <div class="skill-progress-bar-track" title="88% Proficiency">
+                  <div class="skill-progress-bar-fill" data-level="88"></div>
+                </div>
+              </div>
+              
+              <div class="skill-item">
+                <div class="skill-item-header">
+                  <span class="skill-name">Hardware Testing & Debugging</span>
+                  <span class="skill-badge-pill">Advanced</span>
+                </div>
+                <div class="skill-progress-bar-track" title="92% Proficiency">
+                  <div class="skill-progress-bar-fill" data-level="92"></div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+          
+        </div>
+
+        <!-- Tech Tags Cloud -->
+        <div class="tech-tag-cloud-wrapper reveal-init reveal-fade-up">
+          <div class="tag-cloud-title">Technologies &amp; Protocols In My Active Workflow</div>
+          <div class="tag-cloud-list">
+            
+            <span class="tech-tag">
+              <i class="fa-solid fa-terminal" style="font-size: 0.7rem; color: var(--purple-400);"></i>
+              Embedded C
+            </span>
+            
+            <span class="tech-tag">
+              <i class="fa-solid fa-terminal" style="font-size: 0.7rem; color: var(--purple-400);"></i>
+              C/C++
+            </span>
+            
+            <span class="tech-tag">
+              <i class="fa-solid fa-terminal" style="font-size: 0.7rem; color: var(--purple-400);"></i>
+              STM32
+            </span>
+            
+            <span class="tech-tag">
+              <i class="fa-solid fa-terminal" style="font-size: 0.7rem; color: var(--purple-400);"></i>
+              Arduino
+            </span>
+            
+            <span class="tech-tag">
+              <i class="fa-solid fa-terminal" style="font-size: 0.7rem; color: var(--purple-400);"></i>
+              ESP32
+            </span>
+            
+            <span class="tech-tag">
+              <i class="fa-solid fa-terminal" style="font-size: 0.7rem; color: var(--purple-400);"></i>
+              Raspberry Pi
+            </span>
+            
+            <span class="tech-tag">
+              <i class="fa-solid fa-terminal" style="font-size: 0.7rem; color: var(--purple-400);"></i>
+              Infineon iMotion
+            </span>
+            
+            <span class="tech-tag">
+              <i class="fa-solid fa-terminal" style="font-size: 0.7rem; color: var(--purple-400);"></i>
+              UART
+            </span>
+            
+            <span class="tech-tag">
+              <i class="fa-solid fa-terminal" style="font-size: 0.7rem; color: var(--purple-400);"></i>
+              SPI
+            </span>
+            
+            <span class="tech-tag">
+              <i class="fa-solid fa-terminal" style="font-size: 0.7rem; color: var(--purple-400);"></i>
+              I2C
+            </span>
+            
+            <span class="tech-tag">
+              <i class="fa-solid fa-terminal" style="font-size: 0.7rem; color: var(--purple-400);"></i>
+              PWM Control
+            </span>
+            
+            <span class="tech-tag">
+              <i class="fa-solid fa-terminal" style="font-size: 0.7rem; color: var(--purple-400);"></i>
+              PID Algorithms
+            </span>
+            
+            <span class="tech-tag">
+              <i class="fa-solid fa-terminal" style="font-size: 0.7rem; color: var(--purple-400);"></i>
+              STM32CubeIDE
+            </span>
+            
+            <span class="tech-tag">
+              <i class="fa-solid fa-terminal" style="font-size: 0.7rem; color: var(--purple-400);"></i>
+              EasyEDA
+            </span>
+            
+            <span class="tech-tag">
+              <i class="fa-solid fa-terminal" style="font-size: 0.7rem; color: var(--purple-400);"></i>
+              Proteus
+            </span>
+            
+            <span class="tech-tag">
+              <i class="fa-solid fa-terminal" style="font-size: 0.7rem; color: var(--purple-400);"></i>
+              FreeRTOS
+            </span>
+            
+            <span class="tech-tag">
+              <i class="fa-solid fa-terminal" style="font-size: 0.7rem; color: var(--purple-400);"></i>
+              Sensor Interfacing
+            </span>
+            
+            <span class="tech-tag">
+              <i class="fa-solid fa-terminal" style="font-size: 0.7rem; color: var(--purple-400);"></i>
+              IoT Systems
+            </span>
+            
+            <span class="tech-tag">
+              <i class="fa-solid fa-terminal" style="font-size: 0.7rem; color: var(--purple-400);"></i>
+              PCB Design
+            </span>
+            
+            <span class="tech-tag">
+              <i class="fa-solid fa-terminal" style="font-size: 0.7rem; color: var(--purple-400);"></i>
+              Digital Logic
+            </span>
+            
+            <span class="tech-tag">
+              <i class="fa-solid fa-terminal" style="font-size: 0.7rem; color: var(--purple-400);"></i>
+              Firmware Debugging
+            </span>
+            
+            <span class="tech-tag">
+              <i class="fa-solid fa-terminal" style="font-size: 0.7rem; color: var(--purple-400);"></i>
+              Git
+            </span>
+            
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 4: PROJECTS
+         ========================================================================== -->
+    <section class="section" id="projects">
+      <div class="container">
+        
+        <div class="section-header reveal-init reveal-fade-up">
+          <span class="section-tag">// 03. SELECTED WORKS</span>
+          <h2 class="section-title">
+            Featured <span class="gradient-text">Projects</span>
+          </h2>
+          <p class="section-subtitle">
+            Showcasing real-world systems, asynchronous engines, and responsive user experiences.
+          </p>
+        </div>
+
+        <!-- Project Filter Buttons -->
+        <div class="projects-filter-nav reveal-init reveal-fade-up">
+          <button class="project-filter-btn active" data-filter="all">All Projects</button>
+          <button class="project-filter-btn" data-filter="embedded">Embedded &amp; Firmware</button>
+          <button class="project-filter-btn" data-filter="control">STM32 &amp; Control</button>
+          <button class="project-filter-btn" data-filter="iot">IoT &amp; Sensors</button>
+          <button class="project-filter-btn" data-filter="pcb">PCB &amp; Simulation</button>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="projects-grid">
+          
+          <div class="project-card tilt-effect reveal-init reveal-fade-up" data-category="embedded">
+            
+            <!-- Mockup Frame -->
+            <div class="project-mockup-frame">
+              <div class="mockup-header-bar">
+                <div class="terminal-dots">
+                  <span class="dot dot-red" style="width: 8px; height: 8px;"></span>
+                  <span class="dot dot-yellow" style="width: 8px; height: 8px;"></span>
+                  <span class="dot dot-green" style="width: 8px; height: 8px;"></span>
+                </div>
+                <span>app://infineon-gang-programmer.internal</span>
+                <i class="fa-solid fa-shield-halved" style="color: #4ade80;"></i>
+              </div>
+              <div class="mockup-inner-preview" style="background: radial-gradient(circle at 80% 20%, rgba(168, 85, 247, 0.25) 0%, transparent 60%);">
+                <div class="mockup-badge-overlay">
+                  <i class="fa-brands fa-python" style="color: #c084fc;"></i>
+                  <span>Infineon Gang Programmer Development</span>
+                </div>
+                <div style="font-family: var(--font-mono); font-size: 0.72rem; color: #a855f7; margin-top: 10px; opacity: 0.85;">
+                  &gt; status: 200 OK • latency: 18ms
+                </div>
+              </div>
+            </div>
+
+            <!-- Card Content -->
+            <div class="project-card-body">
+              <span class="project-category-tag">Industrial Embedded</span>
+              <h3 class="project-card-title">Infineon Gang Programmer Development</h3>
+              <p class="project-card-desc">Multi-microcontroller simultaneous flashing system built using Raspberry Pi and Infineon iMotion Link.</p>
+
+              <!-- Metrics -->
+              <div class="project-metrics-banner">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>Multi-MCU Parallel Flashing • Production Ready</span>
+              </div>
+
+              <!-- Tech Stack Tags -->
+              <div class="project-tech-tags">
+                
+                <span class="project-mini-tag">Raspberry Pi</span>
+                
+                <span class="project-mini-tag">Infineon iMotion Link</span>
+                
+                <span class="project-mini-tag">Embedded C</span>
+                
+                <span class="project-mini-tag">Python</span>
+                
+                <span class="project-mini-tag">Bash</span>
+                
+                <span class="project-mini-tag">Hardware Testing</span>
+                
+              </div>
+
+              <!-- Card Action Buttons -->
+              <div class="project-card-actions">
+                <button class="btn btn-primary btn-sm btn-quick-view" data-project='{"accent_gradient": "linear-gradient(135deg, #8B5CF6 0%, #38BDF8 100%)", "category": "embedded", "category_badge": "Industrial Embedded", "demo_url": "https://github.com", "description": "Developed an industrial Gang Programmer system designed to flash multiple Infineon microcontrollers simultaneously. Engineered for production manufacturing lines to dramatically accelerate unit programming cycles.", "github_url": "https://github.com", "highlights": ["Flashing multiple Infineon microcontrollers simultaneously to maximize throughput", "Built using Raspberry Pi and Infineon iMotion Link for automated production environments", "Configured with support for programming both Outdoor AC and Portable AC unit controllers", "Integrated support for two different Infineon microcontroller architectures into a single unified setup", "Significantly reduced unit programming cycle time and streamlined configuration"], "id": "infineon-gang-programmer", "mockup_type": "industrial", "stats": "Multi-MCU Parallel Flashing \u2022 Production Ready", "tagline": "Multi-microcontroller simultaneous flashing system built using Raspberry Pi and Infineon iMotion Link.", "tech_stack": ["Raspberry Pi", "Infineon iMotion Link", "Embedded C", "Python", "Bash", "Hardware Testing"], "title": "Infineon Gang Programmer Development"}'>
+                  <i class="fa-solid fa-eye"></i>
+                  <span>Quick View</span>
+                </button>
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" aria-label="GitHub Repository">
+                  <i class="fa-brands fa-github"></i>
+                  <span>Source</span>
+                </a>
+              </div>
+            </div>
+
+          </div>
+          
+          <div class="project-card tilt-effect reveal-init reveal-fade-up" data-category="embedded">
+            
+            <!-- Mockup Frame -->
+            <div class="project-mockup-frame">
+              <div class="mockup-header-bar">
+                <div class="terminal-dots">
+                  <span class="dot dot-red" style="width: 8px; height: 8px;"></span>
+                  <span class="dot dot-yellow" style="width: 8px; height: 8px;"></span>
+                  <span class="dot dot-green" style="width: 8px; height: 8px;"></span>
+                </div>
+                <span>app://dynamic-ac-programming.internal</span>
+                <i class="fa-solid fa-shield-halved" style="color: #4ade80;"></i>
+              </div>
+              <div class="mockup-inner-preview" style="background: radial-gradient(circle at 80% 20%, rgba(168, 85, 247, 0.25) 0%, transparent 60%);">
+                <div class="mockup-badge-overlay">
+                  <i class="fa-brands fa-python" style="color: #c084fc;"></i>
+                  <span>Dynamic Programming System for Outdoor & Portable ACs</span>
+                </div>
+                <div style="font-family: var(--font-mono); font-size: 0.72rem; color: #a855f7; margin-top: 10px; opacity: 0.85;">
+                  &gt; status: 200 OK • latency: 18ms
+                </div>
+              </div>
+            </div>
+
+            <!-- Card Content -->
+            <div class="project-card-body">
+              <span class="project-category-tag">Firmware & Automation</span>
+              <h3 class="project-card-title">Dynamic Programming System for Outdoor & Portable ACs</h3>
+              <p class="project-card-desc">Automated dynamic programming framework for HVAC embedded controller boards.</p>
+
+              <!-- Metrics -->
+              <div class="project-metrics-banner">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>100% Automated • Zero Configuration Errors</span>
+              </div>
+
+              <!-- Tech Stack Tags -->
+              <div class="project-tech-tags">
+                
+                <span class="project-mini-tag">Raspberry Pi</span>
+                
+                <span class="project-mini-tag">Infineon Programmer</span>
+                
+                <span class="project-mini-tag">Embedded C</span>
+                
+                <span class="project-mini-tag">UART/SPI</span>
+                
+                <span class="project-mini-tag">Linux</span>
+                
+              </div>
+
+              <!-- Card Action Buttons -->
+              <div class="project-card-actions">
+                <button class="btn btn-primary btn-sm btn-quick-view" data-project='{"accent_gradient": "linear-gradient(135deg, #38BDF8 0%, #8B5CF6 100%)", "category": "embedded", "category_badge": "Firmware \u0026 Automation", "demo_url": "https://github.com", "description": "Engineered a dynamic embedded programming system using Raspberry Pi and Infineon iMotion Link. Designed to program and verify firmware across outdoor and portable AC unit controller boards with zero hardware mismatch.", "github_url": "https://github.com", "highlights": ["Dynamic embedded programming system utilizing Raspberry Pi and Infineon iMotion Link", "Multi-target support for flashing two distinct Infineon microcontrollers in one integrated setup", "Improved firmware deployment efficiency and eliminated manual configuration overhead", "Integrated automated firmware integrity check and post-flash validation"], "id": "dynamic-ac-programming", "mockup_type": "firmware", "stats": "100% Automated \u2022 Zero Configuration Errors", "tagline": "Automated dynamic programming framework for HVAC embedded controller boards.", "tech_stack": ["Raspberry Pi", "Infineon Programmer", "Embedded C", "UART/SPI", "Linux"], "title": "Dynamic Programming System for Outdoor \u0026 Portable ACs"}'>
+                  <i class="fa-solid fa-eye"></i>
+                  <span>Quick View</span>
+                </button>
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" aria-label="GitHub Repository">
+                  <i class="fa-brands fa-github"></i>
+                  <span>Source</span>
+                </a>
+              </div>
+            </div>
+
+          </div>
+          
+          <div class="project-card tilt-effect reveal-init reveal-fade-up" data-category="control">
+            
+            <!-- Mockup Frame -->
+            <div class="project-mockup-frame">
+              <div class="mockup-header-bar">
+                <div class="terminal-dots">
+                  <span class="dot dot-red" style="width: 8px; height: 8px;"></span>
+                  <span class="dot dot-yellow" style="width: 8px; height: 8px;"></span>
+                  <span class="dot dot-green" style="width: 8px; height: 8px;"></span>
+                </div>
+                <span>app://stm32-pid-motor-control.internal</span>
+                <i class="fa-solid fa-shield-halved" style="color: #4ade80;"></i>
+              </div>
+              <div class="mockup-inner-preview" style="background: radial-gradient(circle at 80% 20%, rgba(168, 85, 247, 0.25) 0%, transparent 60%);">
+                <div class="mockup-badge-overlay">
+                  <i class="fa-brands fa-python" style="color: #c084fc;"></i>
+                  <span>PID Based DC Motor Speed Control using STM32</span>
+                </div>
+                <div style="font-family: var(--font-mono); font-size: 0.72rem; color: #a855f7; margin-top: 10px; opacity: 0.85;">
+                  &gt; status: 200 OK • latency: 18ms
+                </div>
+              </div>
+            </div>
+
+            <!-- Card Content -->
+            <div class="project-card-body">
+              <span class="project-category-tag">Control Systems & STM32</span>
+              <h3 class="project-card-title">PID Based DC Motor Speed Control using STM32</h3>
+              <p class="project-card-desc">Precision closed-loop DC motor velocity control using STM32 ARM Cortex-M and real-time encoder feedback.</p>
+
+              <!-- Metrics -->
+              <div class="project-metrics-banner">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>Sub-millisecond Feedback • Stable Speed Regulation</span>
+              </div>
+
+              <!-- Tech Stack Tags -->
+              <div class="project-tech-tags">
+                
+                <span class="project-mini-tag">STM32</span>
+                
+                <span class="project-mini-tag">Embedded C</span>
+                
+                <span class="project-mini-tag">PWM</span>
+                
+                <span class="project-mini-tag">Optical Encoder</span>
+                
+                <span class="project-mini-tag">STM32CubeIDE</span>
+                
+                <span class="project-mini-tag">Control Theory</span>
+                
+              </div>
+
+              <!-- Card Action Buttons -->
+              <div class="project-card-actions">
+                <button class="btn btn-primary btn-sm btn-quick-view" data-project='{"accent_gradient": "linear-gradient(135deg, #8B5CF6 0%, #06B6D4 100%)", "category": "control", "category_badge": "Control Systems \u0026 STM32", "demo_url": "https://github.com", "description": "Designed and implemented a closed-loop DC motor speed control system using an STM32 microcontroller. Built a discrete-time PID control algorithm in Embedded C with real-time encoder feedback capture.", "github_url": "https://github.com", "highlights": ["Designed closed-loop DC motor speed regulation hardware and firmware using STM32", "Implemented PID control algorithm in Embedded C using PWM generation and quadrature encoder feedback", "Fine-tuned Proportional, Integral, and Derivative gains for rapid response and minimal overshoot", "Configured STM32 hardware timers for high-frequency PWM switching and pulse accumulation"], "id": "stm32-pid-motor-control", "mockup_type": "motor", "stats": "Sub-millisecond Feedback \u2022 Stable Speed Regulation", "tagline": "Precision closed-loop DC motor velocity control using STM32 ARM Cortex-M and real-time encoder feedback.", "tech_stack": ["STM32", "Embedded C", "PWM", "Optical Encoder", "STM32CubeIDE", "Control Theory"], "title": "PID Based DC Motor Speed Control using STM32"}'>
+                  <i class="fa-solid fa-eye"></i>
+                  <span>Quick View</span>
+                </button>
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" aria-label="GitHub Repository">
+                  <i class="fa-brands fa-github"></i>
+                  <span>Source</span>
+                </a>
+              </div>
+            </div>
+
+          </div>
+          
+          <div class="project-card tilt-effect reveal-init reveal-fade-up" data-category="iot">
+            
+            <!-- Mockup Frame -->
+            <div class="project-mockup-frame">
+              <div class="mockup-header-bar">
+                <div class="terminal-dots">
+                  <span class="dot dot-red" style="width: 8px; height: 8px;"></span>
+                  <span class="dot dot-yellow" style="width: 8px; height: 8px;"></span>
+                  <span class="dot dot-green" style="width: 8px; height: 8px;"></span>
+                </div>
+                <span>app://iot-sensor-telemetry-node.internal</span>
+                <i class="fa-solid fa-shield-halved" style="color: #4ade80;"></i>
+              </div>
+              <div class="mockup-inner-preview" style="background: radial-gradient(circle at 80% 20%, rgba(168, 85, 247, 0.25) 0%, transparent 60%);">
+                <div class="mockup-badge-overlay">
+                  <i class="fa-brands fa-python" style="color: #c084fc;"></i>
+                  <span>IoT Embedded Telemetry & Monitoring Node</span>
+                </div>
+                <div style="font-family: var(--font-mono); font-size: 0.72rem; color: #a855f7; margin-top: 10px; opacity: 0.85;">
+                  &gt; status: 200 OK • latency: 18ms
+                </div>
+              </div>
+            </div>
+
+            <!-- Card Content -->
+            <div class="project-card-body">
+              <span class="project-category-tag">IoT & Sensor Interfacing</span>
+              <h3 class="project-card-title">IoT Embedded Telemetry & Monitoring Node</h3>
+              <p class="project-card-desc">Multi-sensor hardware data acquisition and wireless telemetry node built with ESP32 and microcontrollers.</p>
+
+              <!-- Metrics -->
+              <div class="project-metrics-banner">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>Real-time Telemetry • Low-Power Modes</span>
+              </div>
+
+              <!-- Tech Stack Tags -->
+              <div class="project-tech-tags">
+                
+                <span class="project-mini-tag">ESP32</span>
+                
+                <span class="project-mini-tag">Arduino UNO</span>
+                
+                <span class="project-mini-tag">Embedded C</span>
+                
+                <span class="project-mini-tag">I2C/SPI</span>
+                
+                <span class="project-mini-tag">IoT Systems</span>
+                
+              </div>
+
+              <!-- Card Action Buttons -->
+              <div class="project-card-actions">
+                <button class="btn btn-primary btn-sm btn-quick-view" data-project='{"accent_gradient": "linear-gradient(135deg, #38BDF8 0%, #10B981 100%)", "category": "iot", "category_badge": "IoT \u0026 Sensor Interfacing", "demo_url": "https://github.com", "description": "Developed an end-to-end IoT sensor interfacing system for real-time environmental monitoring. Communicates with digital and analog sensors over I2C and SPI buses with secure wireless telemetry dispatch.", "github_url": "https://github.com", "highlights": ["Interfaced analog and digital sensors with calibrate filtering algorithms", "Implemented multi-protocol communication using I2C and SPI bus lines", "Constructed low-power sleep state cycles for extended battery efficiency", "Real-time sensor telemetry transmission with packet validation"], "id": "iot-sensor-telemetry-node", "mockup_type": "iot", "stats": "Real-time Telemetry \u2022 Low-Power Modes", "tagline": "Multi-sensor hardware data acquisition and wireless telemetry node built with ESP32 and microcontrollers.", "tech_stack": ["ESP32", "Arduino UNO", "Embedded C", "I2C/SPI", "IoT Systems"], "title": "IoT Embedded Telemetry \u0026 Monitoring Node"}'>
+                  <i class="fa-solid fa-eye"></i>
+                  <span>Quick View</span>
+                </button>
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" aria-label="GitHub Repository">
+                  <i class="fa-brands fa-github"></i>
+                  <span>Source</span>
+                </a>
+              </div>
+            </div>
+
+          </div>
+          
+          <div class="project-card tilt-effect reveal-init reveal-fade-up" data-category="pcb">
+            
+            <!-- Mockup Frame -->
+            <div class="project-mockup-frame">
+              <div class="mockup-header-bar">
+                <div class="terminal-dots">
+                  <span class="dot dot-red" style="width: 8px; height: 8px;"></span>
+                  <span class="dot dot-yellow" style="width: 8px; height: 8px;"></span>
+                  <span class="dot dot-green" style="width: 8px; height: 8px;"></span>
+                </div>
+                <span>app://easyeda-pcb-design.internal</span>
+                <i class="fa-solid fa-shield-halved" style="color: #4ade80;"></i>
+              </div>
+              <div class="mockup-inner-preview" style="background: radial-gradient(circle at 80% 20%, rgba(168, 85, 247, 0.25) 0%, transparent 60%);">
+                <div class="mockup-badge-overlay">
+                  <i class="fa-brands fa-python" style="color: #c084fc;"></i>
+                  <span>Embedded Circuit Simulation & PCB Design</span>
+                </div>
+                <div style="font-family: var(--font-mono); font-size: 0.72rem; color: #a855f7; margin-top: 10px; opacity: 0.85;">
+                  &gt; status: 200 OK • latency: 18ms
+                </div>
+              </div>
+            </div>
+
+            <!-- Card Content -->
+            <div class="project-card-body">
+              <span class="project-category-tag">PCB Design & EDA</span>
+              <h3 class="project-card-title">Embedded Circuit Simulation & PCB Design</h3>
+              <p class="project-card-desc">Schematic capture, circuit simulation, and 2-layer PCB layout using Proteus and EasyEDA.</p>
+
+              <!-- Metrics -->
+              <div class="project-metrics-banner">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>Verified Simulation • 2-Layer PCB Layout</span>
+              </div>
+
+              <!-- Tech Stack Tags -->
+              <div class="project-tech-tags">
+                
+                <span class="project-mini-tag">EasyEDA</span>
+                
+                <span class="project-mini-tag">Proteus</span>
+                
+                <span class="project-mini-tag">PCB Design</span>
+                
+                <span class="project-mini-tag">Digital Logic</span>
+                
+                <span class="project-mini-tag">Circuit Analysis</span>
+                
+              </div>
+
+              <!-- Card Action Buttons -->
+              <div class="project-card-actions">
+                <button class="btn btn-primary btn-sm btn-quick-view" data-project='{"accent_gradient": "linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%)", "category": "pcb", "category_badge": "PCB Design \u0026 EDA", "demo_url": "https://github.com", "description": "Designed hardware schematics and printed circuit board layouts for microcontroller breakout and sensor conditioning circuits. Performed simulation in Proteus prior to hardware prototyping.", "github_url": "https://github.com", "highlights": ["Schematic design and component layout using EasyEDA and Proteus", "Simulation of digital logic, transistor switching, and analog signal conditioning", "Designed 2-layer PCB layout with optimized trace routing and ground planes", "Generated Gerber files and validated Design Rule Checks (DRC)"], "id": "easyeda-pcb-design", "mockup_type": "pcb", "stats": "Verified Simulation \u2022 2-Layer PCB Layout", "tagline": "Schematic capture, circuit simulation, and 2-layer PCB layout using Proteus and EasyEDA.", "tech_stack": ["EasyEDA", "Proteus", "PCB Design", "Digital Logic", "Circuit Analysis"], "title": "Embedded Circuit Simulation \u0026 PCB Design"}'>
+                  <i class="fa-solid fa-eye"></i>
+                  <span>Quick View</span>
+                </button>
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" aria-label="GitHub Repository">
+                  <i class="fa-brands fa-github"></i>
+                  <span>Source</span>
+                </a>
+              </div>
+            </div>
+
+          </div>
+          
+          <div class="project-card tilt-effect reveal-init reveal-fade-up" data-category="embedded">
+            
+            <!-- Mockup Frame -->
+            <div class="project-mockup-frame">
+              <div class="mockup-header-bar">
+                <div class="terminal-dots">
+                  <span class="dot dot-red" style="width: 8px; height: 8px;"></span>
+                  <span class="dot dot-yellow" style="width: 8px; height: 8px;"></span>
+                  <span class="dot dot-green" style="width: 8px; height: 8px;"></span>
+                </div>
+                <span>app://multi-protocol-comm-bridge.internal</span>
+                <i class="fa-solid fa-shield-halved" style="color: #4ade80;"></i>
+              </div>
+              <div class="mockup-inner-preview" style="background: radial-gradient(circle at 80% 20%, rgba(168, 85, 247, 0.25) 0%, transparent 60%);">
+                <div class="mockup-badge-overlay">
+                  <i class="fa-brands fa-python" style="color: #c084fc;"></i>
+                  <span>UART, SPI & I2C Protocol Bridge</span>
+                </div>
+                <div style="font-family: var(--font-mono); font-size: 0.72rem; color: #a855f7; margin-top: 10px; opacity: 0.85;">
+                  &gt; status: 200 OK • latency: 18ms
+                </div>
+              </div>
+            </div>
+
+            <!-- Card Content -->
+            <div class="project-card-body">
+              <span class="project-category-tag">Serial Communication</span>
+              <h3 class="project-card-title">UART, SPI & I2C Protocol Bridge</h3>
+              <p class="project-card-desc">Deterministic serial communication bridge for inter-microcontroller data exchange.</p>
+
+              <!-- Metrics -->
+              <div class="project-metrics-banner">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>115200 Baud UART • 400kHz I2C Verified</span>
+              </div>
+
+              <!-- Tech Stack Tags -->
+              <div class="project-tech-tags">
+                
+                <span class="project-mini-tag">STM32</span>
+                
+                <span class="project-mini-tag">Arduino</span>
+                
+                <span class="project-mini-tag">Embedded C</span>
+                
+                <span class="project-mini-tag">UART</span>
+                
+                <span class="project-mini-tag">SPI</span>
+                
+                <span class="project-mini-tag">I2C</span>
+                
+              </div>
+
+              <!-- Card Action Buttons -->
+              <div class="project-card-actions">
+                <button class="btn btn-primary btn-sm btn-quick-view" data-project='{"accent_gradient": "linear-gradient(135deg, #6366F1 0%, #38BDF8 100%)", "category": "embedded", "category_badge": "Serial Communication", "demo_url": "https://github.com", "description": "Constructed an embedded communication bridge capable of translating and routing packets across UART, SPI, and I2C buses. Includes frame packetization, checksum verification, and error recovery.", "github_url": "https://github.com", "highlights": ["Multi-bus protocol translation between STM32 and Arduino master/slave nodes", "Custom packet framing with CRC error detection and buffer overflow protection", "Verified signal timing and bus integrity using oscilloscope and logic analyzer", "Deterministic interrupt-driven serial receive/transmit buffers"], "id": "multi-protocol-comm-bridge", "mockup_type": "serial", "stats": "115200 Baud UART \u2022 400kHz I2C Verified", "tagline": "Deterministic serial communication bridge for inter-microcontroller data exchange.", "tech_stack": ["STM32", "Arduino", "Embedded C", "UART", "SPI", "I2C"], "title": "UART, SPI \u0026 I2C Protocol Bridge"}'>
+                  <i class="fa-solid fa-eye"></i>
+                  <span>Quick View</span>
+                </button>
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" aria-label="GitHub Repository">
+                  <i class="fa-brands fa-github"></i>
+                  <span>Source</span>
+                </a>
+              </div>
+            </div>
+
+          </div>
+          
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Project Quick View Modal -->
+    <div class="project-modal-backdrop" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="project-modal-window">
+        <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close Project Details Modal">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <span class="modal-category-badge" id="modalCategory">Category</span>
+        <h3 class="modal-title" id="modalTitle">Project Title</h3>
+        <p class="modal-desc" id="modalDesc">Detailed description of the project architecture and outcomes.</p>
+        
+        <div class="modal-highlights-title">
+          <i class="fa-solid fa-microchip" style="color: var(--purple-400);"></i>
+          <span>Engineering Solutions &amp; Features</span>
+        </div>
+        <div class="modal-highlights-list" id="modalHighlightsList"></div>
+
+        <div style="margin-top: 18px; margin-bottom: 8px; font-weight: 600; font-size: 0.9rem; color: #ffffff;">
+          Tech Stack:
+        </div>
+        <div class="project-tech-tags" id="modalTechTags"></div>
+
+        <div class="modal-footer-actions">
+          <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm" id="modalDemoLink">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            <span>Live Demonstration</span>
+          </a>
+          <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" id="modalGithubLink">
+            <i class="fa-brands fa-github"></i>
+            <span>View Source Code</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==========================================================================
+         SECTION 5: EDUCATION & EXPERIENCE (TIMELINE)
+         ========================================================================== -->
+    <section class="section" id="education">
+      <div class="container">
+        
+        <div class="section-header reveal-init reveal-fade-up">
+          <span class="section-tag">// 04. EDUCATION &amp; CAREER</span>
+          <h2 class="section-title">
+            Academic Foundations &amp; <span class="gradient-text">Experience</span>
+          </h2>
+          <p class="section-subtitle">
+            A track record of academic excellence, industry leadership, and continuous certification.
+          </p>
+        </div>
+
+        <!-- Timeline Tab Navigation -->
+        <div class="timeline-nav-tabs reveal-init reveal-fade-up">
+          <button class="timeline-tab-btn active" data-timeline="all">All Milestones</button>
+          <button class="timeline-tab-btn" data-timeline="education">Education &amp; Credentials</button>
+          <button class="timeline-tab-btn" data-timeline="experience">Work Experience</button>
+        </div>
+
+        <!-- Glowing Neon Timeline Structure -->
+        <div class="neon-timeline">
+          
+          <!-- Experience Item 1 -->
+          
+          <div class="timeline-item left reveal-init reveal-fade-right" data-type="experience">
+            <span class="timeline-node"></span>
+            <div class="timeline-card">
+              <div class="timeline-badge-row">
+                <span class="timeline-badge">Industry Experience</span>
+                <span class="timeline-period">Internship</span>
+              </div>
+              <h3 class="timeline-title">Embedded Systems Intern</h3>
+              <div class="timeline-subtitle">Virtual Forest Private Limited</div>
+              <p class="timeline-description">Developed embedded applications, firmware solutions, and hardware-software integrations for microcontroller-based products.</p>
+              <div class="timeline-bullet-list">
+                
+                <div class="timeline-bullet">
+                  <i class="fa-solid fa-circle-check"></i>
+                  <span>Developed embedded applications using microcontrollers and Embedded C.</span>
+                </div>
+                
+                <div class="timeline-bullet">
+                  <i class="fa-solid fa-circle-check"></i>
+                  <span>Implemented sensor interfacing and hardware-software integration.</span>
+                </div>
+                
+                <div class="timeline-bullet">
+                  <i class="fa-solid fa-circle-check"></i>
+                  <span>Assisted in debugging firmware and validating embedded prototypes.</span>
+                </div>
+                
+                <div class="timeline-bullet">
+                  <i class="fa-solid fa-circle-check"></i>
+                  <span>Worked on IoT-based embedded solutions for real-time monitoring systems.</span>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+
+          <!-- Education Item 1 -->
+          
+          <div class="timeline-item right reveal-init reveal-fade-left" data-type="education">
+            <span class="timeline-node"></span>
+            <div class="timeline-card">
+              <div class="timeline-badge-row">
+                <span class="timeline-badge">Undergraduate Degree</span>
+                <span class="timeline-period">2022 — 2026</span>
+              </div>
+              <h3 class="timeline-title">B.Tech – Electronics and Communication Engineering</h3>
+              <div class="timeline-subtitle">Mahatma Jyotiba Phule Rohilkhand University, Bareilly</div>
+              <div class="timeline-grade-pill">B.Tech in ECE (Current)</div>
+              <p class="timeline-description">Focused on Embedded Systems, Microcontrollers (STM32, 8051, AVR), IoT Architectures, Digital Logic Design, and Signal Conditioning.</p>
+              <div class="timeline-bullet-list">
+                
+                <div class="timeline-bullet">
+                  <i class="fa-solid fa-graduation-cap"></i>
+                  <span>Coursework: Microcontrollers & Microprocessors, Digital Logic, Electronic Circuit Design, Signals & Systems</span>
+                </div>
+                
+                <div class="timeline-bullet">
+                  <i class="fa-solid fa-graduation-cap"></i>
+                  <span>Hands-on project work in microcontroller programming, firmware development, and hardware-software integration</span>
+                </div>
+                
+                <div class="timeline-bullet">
+                  <i class="fa-solid fa-graduation-cap"></i>
+                  <span>Active developer and participant in technical embedded prototyping competitions</span>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+
+          <!-- Experience Item 2 -->
+          
+          <div class="timeline-item left reveal-init reveal-fade-right" data-type="experience">
+            <span class="timeline-node"></span>
+            <div class="timeline-card">
+              <div class="timeline-badge-row">
+                <span class="timeline-badge">University Leadership</span>
+                <span class="timeline-period">Leadership</span>
+              </div>
+              <h3 class="timeline-title">President – Embedronics Club</h3>
+              <div class="timeline-subtitle">Mahatma Jyotiba Phule Rohilkhand University</div>
+              <p class="timeline-description">Lead the university technical student society dedicated to Embedded Systems, Robotics, and IoT technologies.</p>
+              <div class="timeline-bullet-list">
+                
+                <div class="timeline-bullet">
+                  <i class="fa-solid fa-circle-check"></i>
+                  <span>Organized technical workshops on Embedded Systems and IoT for university students.</span>
+                </div>
+                
+                <div class="timeline-bullet">
+                  <i class="fa-solid fa-circle-check"></i>
+                  <span>Mentored students in microcontroller programming (Arduino, STM32) and hardware interfacing.</span>
+                </div>
+                
+                <div class="timeline-bullet">
+                  <i class="fa-solid fa-circle-check"></i>
+                  <span>Promoted hands-on learning through project-based build sessions and competitive hackathons.</span>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+
+          <!-- Certification Item 1 -->
+          
+          <div class="timeline-item right reveal-init reveal-fade-left" data-type="education">
+            <span class="timeline-node"></span>
+            <div class="timeline-card">
+              <div class="timeline-badge-row">
+                <span class="timeline-badge">Senior Secondary</span>
+                <span class="timeline-period">2021 — 2022</span>
+              </div>
+              <h3 class="timeline-title">Intermediate (Senior Secondary)</h3>
+              <div class="timeline-subtitle">Pawanagar Mahaveer Inter College, Kushinagar</div>
+              <div class="timeline-grade-pill">PCM (Physics, Chemistry, Mathematics)</div>
+              <p class="timeline-description">Completed Senior Secondary education with foundational focus on Physics, Mathematics, and Analytical Sciences.</p>
+              <div class="timeline-bullet-list">
+                
+                <div class="timeline-bullet">
+                  <i class="fa-solid fa-award"></i>
+                  <span>Core Focus: Physics, Chemistry, and Advanced Mathematics</span>
+                </div>
+                
+                <div class="timeline-bullet">
+                  <i class="fa-solid fa-award"></i>
+                  <span>Developed strong foundation in electrical physics, magnetism, and algebra</span>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+
+          <!-- Certification Item 2 -->
+          
+          <div class="timeline-item left reveal-init reveal-fade-right" data-type="education">
+            <span class="timeline-node"></span>
+            <div class="timeline-card">
+              <div class="timeline-badge-row">
+                <span class="timeline-badge">Industrial Certification</span>
+                <span class="timeline-period">Internship Certificate</span>
+              </div>
+              <h3 class="timeline-title">Embedded Systems and PCB Design</h3>
+              <div class="timeline-subtitle">Virtual Forest Private Limited</div>
+              <div class="timeline-grade-pill">Certificate Verified</div>
+              <p class="timeline-description">Comprehensive industrial training and internship certification covering microcontroller firmware, sensor interfacing, and hardware prototyping.</p>
+              <div class="timeline-bullet-list">
+                
+                <div class="timeline-bullet">
+                  <i class="fa-solid fa-certificate"></i>
+                  <span>Embedded firmware development with microcontrollers and Embedded C</span>
+                </div>
+                
+                <div class="timeline-bullet">
+                  <i class="fa-solid fa-certificate"></i>
+                  <span>Sensor interfacing and hardware-software integration for real-time monitoring</span>
+                </div>
+                
+                <div class="timeline-bullet">
+                  <i class="fa-solid fa-certificate"></i>
+                  <span>Assisted in hardware debugging, PCB concepts, and prototype validation</span>
+                </div>
+                
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 6: CONTACT
+         ========================================================================== -->
+    <section class="section" id="contact">
+      <div class="container">
+        
+        <div class="section-header reveal-init reveal-fade-up">
+          <span class="section-tag">// 05. REACH OUT</span>
+          <h2 class="section-title">
+            Let's Build Something <span class="gradient-text">Extraordinary</span>
+          </h2>
+          <p class="section-subtitle">
+            Whether you are looking for a senior engineer, seeking consultation, or want to discuss a new venture, my inbox is always open.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          
+          <!-- Left Column: Direct Info Cards -->
+          <div class="contact-info-panel reveal-init reveal-fade-right">
+            
+            <!-- Email Card with Copy Trigger -->
+            <div class="contact-card-box">
+              <div class="contact-card-icon">
+                <i class="fa-solid fa-envelope"></i>
+              </div>
+              <div class="contact-card-details">
+                <div class="contact-card-label">Direct Email</div>
+                <div class="contact-card-value">priyanshpriyansh34@gmail.com</div>
+                <button class="copy-btn-action copy-trigger" data-copy="priyanshpriyansh34@gmail.com">
+                  <i class="fa-regular fa-copy"></i>
+                  <span>Copy Address</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Phone / Comms Card -->
+            <div class="contact-card-box">
+              <div class="contact-card-icon">
+                <i class="fa-solid fa-phone"></i>
+              </div>
+              <div class="contact-card-details">
+                <div class="contact-card-label">Direct Line</div>
+                <div class="contact-card-value">+91 6307858366</div>
+                <button class="copy-btn-action copy-trigger" data-copy="+91 6307858366">
+                  <i class="fa-regular fa-copy"></i>
+                  <span>Copy Phone</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Location & Timezone -->
+            <div class="contact-card-box">
+              <div class="contact-card-icon">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+              <div class="contact-card-details">
+                <div class="contact-card-label">Primary Location</div>
+                <div class="contact-card-value">Bareilly / Kushinagar, Uttar Pradesh, India</div>
+                <div style="font-size: 0.82rem; color: var(--text-muted); margin-top: 4px;">
+                  Timezone: IST (UTC+5:30) • Flexible for Opportunities
+                </div>
+              </div>
+            </div>
+
+            <!-- Availability Alert Box -->
+            <div class="availability-alert-box">
+              <div class="alert-status-header">
+                <span class="status-dot"></span>
+                <span>Available for Embedded Systems & IoT Roles</span>
+              </div>
+              <p class="alert-status-text">
+                Typical reply turnaround is Within 24 Hours. Feel free to drop a detailed brief or schedule an introductory technical sync.
+              </p>
+            </div>
+
+          </div>
+
+          <!-- Right Column: Interactive Form -->
+          <div class="contact-form-panel reveal-init reveal-fade-left delay-100">
+            <div class="contact-form-card">
+              <h3 class="form-header-title">Send a Direct Message</h3>
+              <p class="form-header-sub">Connected directly to the Python backend `/api/contact` endpoint.</p>
+
+              <form id="contactForm">
+                <div class="form-group">
+                  <label for="formName" class="form-label">Full Name *</label>
+                  <input type="text" id="formName" class="form-input" placeholder="e.g. Sarah Jenkins" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="formEmail" class="form-label">Email Address *</label>
+                  <input type="email" id="formEmail" class="form-input" placeholder="e.g. sarah@company.com" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="formSubject" class="form-label">Project Type / Inquiry Topic</label>
+                  <select id="formSubject" class="form-select">
+                    <option value="Embedded Systems Opportunity">Embedded Systems / Firmware Role</option>
+                    <option value="IoT & Hardware Development">IoT &amp; Hardware Development Project</option>
+                    <option value="STM32 / Microcontroller Project">STM32 / Microcontroller Programming</option>
+                    <option value="PCB & Prototype Consultation">PCB Design &amp; Prototyping</option>
+                    <option value="General Inquiry">General Technical Inquiry</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="formMessage" class="form-label">Message *</label>
+                  <textarea id="formMessage" class="form-textarea" placeholder="Tell me about your project, goals, or timeline..." maxlength="1000" required></textarea>
+                  <div class="char-counter" id="charCount">0 / 1000</div>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%;">
+                  <i class="fa-solid fa-paper-plane"></i>
+                  <span>Transmit Message</span>
+                </button>
+              </form>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Interactive Toast Notification -->
+  <div class="toast-notification" id="toastNotification" role="alert" aria-live="assertive">
+    <i class="toast-icon fa-solid fa-circle-check"></i>
+    <span id="toastMessage">Your message has been dispatched successfully!</span>
+  </div>
+
+  <!-- Back to Top Floating Button -->
+  <button class="back-to-top-btn" id="backToTop" aria-label="Back to top of page">
+    <i class="fa-solid fa-chevron-up"></i>
+  </button>
+
+  <!-- ==========================================================================
+       FOOTER
+       ========================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#home" class="brand-logo">
+            <span class="logo-bracket">&lt;</span>
+            <span class="logo-text">Priyanshu.py</span>
+            <span class="logo-bracket">/&gt;</span>
+          </a>
+          <p class="footer-brand-desc">
+            Electronics & Communication Engineering student passionate about Embedded Systems, IoT hardware solutions, and real-time firmware.
+          </p>
+        </div>
+
+        <div class="footer-links-group">
+          <a href="#home" class="footer-nav-link">Home</a>
+          <a href="#about" class="footer-nav-link">About</a>
+          <a href="#skills" class="footer-nav-link">Skills</a>
+          <a href="#projects" class="footer-nav-link">Projects</a>
+          <a href="#education" class="footer-nav-link">Education</a>
+          <a href="#contact" class="footer-nav-link">Contact</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 Priyanshu Kumar Srivastav. All rights reserved.
+        </div>
+        <div class="footer-tech-badge">
+          <i class="fa-brands fa-python"></i>
+          <span>Built with Python &bull; HTML5 &bull; CSS3 &bull; JavaScript</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="static/js/particles.js"></script>
+  <script src="static/js/main.js"></script>
+</body>
+</html>

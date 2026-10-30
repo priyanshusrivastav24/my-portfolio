@@ -1,0 +1,98 @@
+/* ==========================================================================
+   ANIMATIONS: SMOOTH SCROLLING, FADE-INS & ANIMATED GRADIENT ACCENTS
+   ========================================================================== */
+
+/* Animated Gradient Accents (Purple #8B5CF6 to Blue #38BDF8) */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Pulsing Blue Beacon Dot */
+@keyframes pulseBlueBeacon {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 7px rgba(56, 189, 248, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(56, 189, 248, 0);
+  }
+}
+
+/* Blinking Typewriter Cursor */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Floating Ambient Orbs */
+@keyframes floatOrb {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(45px, -35px) scale(1.08);
+  }
+  100% {
+    transform: translate(-30px, 25px) scale(0.96);
+  }
+}
+
+.ambient-orb {
+  animation: floatOrb 22s infinite alternate ease-in-out;
+}
+
+/* ==========================================================================
+   SUBTLE FADE-IN & SCROLL REVEAL STYLES
+   ========================================================================== */
+
+.reveal-init {
+  opacity: 0;
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-fade-up {
+  transform: translateY(28px);
+}
+
+.reveal-fade-left {
+  transform: translateX(-28px);
+}
+
+.reveal-fade-right {
+  transform: translateX(28px);
+}
+
+.reveal-scale {
+  transform: scale(0.94);
+}
+
+/* Triggered State when scrolled into viewport */
+.reveal-visible {
+  opacity: 1 !important;
+  transform: translate(0, 0) scale(1) !important;
+}
+
+/* Elegant Hover Transition Helpers */
+.hover-lift {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+}

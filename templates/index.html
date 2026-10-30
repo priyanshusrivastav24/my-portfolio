@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  <title>{{ profile.name }} | {{ profile.title }}</title>
+  <meta name="description" content="{{ profile.tagline }}">
+  <meta name="keywords" content="Python, Full-Stack, Portfolio, FastAPI, Flask, Web Developer, Software Engineer, UI/UX, Dark Purple Theme">
+  <meta name="author" content="{{ profile.name }}">
+  <meta name="theme-color" content="#090714">
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="{{ profile.name }} | {{ profile.title }}">
+  <meta property="og:description" content="{{ profile.tagline }}">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="static/assets/favicon.svg">
+
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Core Stylesheets -->
+  <link rel="stylesheet" href="static/css/style.css">
+  <link rel="stylesheet" href="static/css/animations.css">
+</head>
+<body>
+
+  <!-- Top Scroll Progress Indicator -->
+  <div class="scroll-progress-bar" id="scrollProgress"></div>
+
+  <!-- Interactive Cursor Spotlight Tracker -->
+  <div class="cursor-spotlight"></div>
+
+  <!-- Background Particle Constellation Canvas -->
+  <canvas id="particle-canvas"></canvas>
+
+  <!-- Ambient Glowing Violet Orbs in Background -->
+  <div class="ambient-orb orb-1"></div>
+  <div class="ambient-orb orb-2"></div>
+  <div class="ambient-orb orb-3"></div>
+
+  <!-- ==========================================================================
+       NAVIGATION BAR
+       ========================================================================== -->
+  <header class="site-header" id="siteHeader">
+    <div class="container nav-container">
+      <a href="#home" class="brand-logo" aria-label="Home">
+        <span class="logo-bracket">&lt;</span>
+        <span class="logo-text">{{ profile.short_name }}.py</span>
+        <span class="logo-bracket">/&gt;</span>
+        <span class="logo-tag">v2.0</span>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="nav-menu" aria-label="Main Navigation">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#about" class="nav-link">About Me</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#education" class="nav-link">Education</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+
+      <!-- Desktop Nav Actions -->
+      <div class="nav-actions">
+        <!-- Theme Toggle Button -->
+        <button class="theme-toggle-btn" id="themeToggle" aria-label="Toggle Light/Dark Theme" title="Toggle Light/Dark Mode">
+          <i class="fa-solid fa-moon moon-icon"></i>
+          <i class="fa-solid fa-sun sun-icon"></i>
+        </button>
+
+        <!-- Resume Download Button -->
+        <a href="static/assets/Priyanshu_Kumar_Srivastav_Resume.pdf" download="Priyanshu_Kumar_Srivastav_Resume.pdf" class="btn btn-resume btn-sm" title="Download Official Resume PDF">
+          <i class="fa-solid fa-file-arrow-down"></i>
+          <span>Resume</span>
+        </a>
+
+        <div class="status-badge" title="Status: Active">
+          <span class="status-dot"></span>
+          <span>Available</span>
+        </div>
+        <a href="#contact" class="btn btn-primary btn-sm">
+          <span>Let's Talk</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger Button -->
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Backdrop & Menu -->
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+  <div class="mobile-drawer" id="mobileDrawer">
+    <div class="mobile-drawer-top">
+      <div class="brand-logo" style="margin-bottom: 30px;">
+        <span class="logo-bracket">&lt;</span>
+        <span class="logo-text">{{ profile.short_name }}.py</span>
+        <span class="logo-bracket">/&gt;</span>
+      </div>
+      <nav class="mobile-nav-links">
+        <a href="#home" class="mobile-nav-link active">
+          <span>Home</span>
+          <i class="fa-solid fa-chevron-right"></i>
+        </a>
+        <a href="#about" class="mobile-nav-link">
+          <span>About Me</span>
+          <i class="fa-solid fa-chevron-right"></i>
+        </a>
+        <a href="#skills" class="mobile-nav-link">
+          <span>Skills</span>
+          <i class="fa-solid fa-chevron-right"></i>
+        </a>
+        <a href="#projects" class="mobile-nav-link">
+          <span>Projects</span>
+          <i class="fa-solid fa-chevron-right"></i>
+        </a>
+        <a href="#education" class="mobile-nav-link">
+          <span>Education</span>
+          <i class="fa-solid fa-chevron-right"></i>
+        </a>
+        <a href="#contact" class="mobile-nav-link">
+          <span>Contact</span>
+          <i class="fa-solid fa-chevron-right"></i>
+        </a>
+      </nav>
+    </div>
+    <div class="mobile-drawer-bottom">
+      <a href="static/assets/Priyanshu_Kumar_Srivastav_Resume.pdf" download="Priyanshu_Kumar_Srivastav_Resume.pdf" class="btn btn-resume" style="width: 100%; margin-bottom: 12px;">
+        <i class="fa-solid fa-file-arrow-down"></i>
+        <span>Download Resume (PDF)</span>
+      </a>
+      <a href="#contact" class="btn btn-primary" style="width: 100%; margin-bottom: 16px;">
+        <i class="fa-solid fa-paper-plane"></i>
+        <span>Get in Touch</span>
+      </a>
+      <div class="status-badge" style="justify-content: center;">
+        <span class="status-dot"></span>
+        <span>{{ profile.availability_status }}</span>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- ==========================================================================
+         SECTION 1: HOME (HERO)
+         ========================================================================== -->
+    <section class="section hero-section" id="home">
+      <div class="container">
+        <div class="hero-grid">
+          
+          <!-- Hero Text & CTA -->
+          <div class="hero-content reveal-init reveal-fade-up">
+            <div class="hero-badge">
+              <i class="fa-solid fa-microchip" style="color: var(--blue-accent);"></i>
+              <span>Embedded Systems &amp; IoT Architecture</span>
+            </div>
+            
+            <h1 class="hero-title">
+              Hi, I'm <span class="gradient-text">{{ profile.name }}</span>
+            </h1>
+
+            <div class="typewriter-wrapper">
+              <span class="typewriter-prefix">I am a</span>
+              <span class="typewriter-text" id="typewriter" data-roles='{{ profile.roles | tojson }}'></span>
+              <span class="typewriter-cursor">|</span>
+            </div>
+
+            <p class="hero-description">
+              {{ profile.tagline }}
+            </p>
+
+            <div class="hero-cta-group">
+              <a href="#projects" class="btn btn-primary">
+                <span>Explore Work</span>
+                <i class="fa-solid fa-arrow-down"></i>
+              </a>
+              <a href="static/assets/Priyanshu_Kumar_Srivastav_Resume.pdf" download="Priyanshu_Kumar_Srivastav_Resume.pdf" class="btn btn-resume" title="Download Official Resume PDF">
+                <i class="fa-solid fa-file-arrow-down"></i>
+                <span>Download Resume</span>
+              </a>
+              <a href="#contact" class="btn btn-secondary">
+                <i class="fa-solid fa-envelope"></i>
+                <span>Get In Touch</span>
+              </a>
+            </div>
+
+            <div class="hero-socials">
+              <span class="social-label">Connect:</span>
+              <a href="{{ profile.social.github }}" target="_blank" rel="noopener noreferrer" class="btn-icon-only" aria-label="GitHub Profile">
+                <i class="fa-brands fa-github"></i>
+              </a>
+              <a href="{{ profile.social.linkedin }}" target="_blank" rel="noopener noreferrer" class="btn-icon-only" aria-label="LinkedIn Profile">
+                <i class="fa-brands fa-linkedin-in"></i>
+              </a>
+              <a href="{{ profile.social.twitter }}" target="_blank" rel="noopener noreferrer" class="btn-icon-only" aria-label="Twitter Profile">
+                <i class="fa-brands fa-x-twitter"></i>
+              </a>
+              <a href="{{ profile.social.discord }}" target="_blank" rel="noopener noreferrer" class="btn-icon-only" aria-label="Discord">
+                <i class="fa-brands fa-discord"></i>
+              </a>
+              <a href="{{ profile.social.kaggle }}" target="_blank" rel="noopener noreferrer" class="btn-icon-only" aria-label="Kaggle / Data">
+                <i class="fa-brands fa-kaggle"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Hero Photograph Area (Beside the Name) -->
+          <div class="hero-photo-column reveal-init reveal-scale delay-200">
+            <div class="hero-photo-card tilt-effect">
+              <!-- Glow Aura Behind Photo -->
+              <div class="photo-glow-aura"></div>
+
+              <!-- Main Photograph Frame -->
+              <div class="photo-frame-wrapper">
+                <img src="static/assets/profile.jpg" onerror="this.onerror=null; this.src='static/assets/avatar.svg';" alt="{{ profile.name }} Photograph" class="hero-photo-img" id="heroPhotoImg">
+                
+                <!-- Quick Upload / Preview Trigger -->
+                <label for="photoUploadInput" class="photo-overlay-action" title="Click to preview your photograph immediately">
+                  <i class="fa-solid fa-camera"></i>
+                  <span>Upload Photo</span>
+                </label>
+                <input type="file" id="photoUploadInput" accept="image/*" style="display: none;">
+              </div>
+
+              <!-- Floating Experience Badge -->
+              <div class="photo-floating-pill pill-top-right">
+                <i class="fa-solid fa-code" style="color: var(--blue-accent);"></i>
+                <span>{{ profile.years_experience }} Yrs Experience</span>
+              </div>
+
+              <!-- Floating Available Badge -->
+              <div class="photo-floating-pill pill-bottom-left">
+                <span class="status-dot"></span>
+                <span>Available for Hire</span>
+              </div>
+
+              <!-- Name & Title Tag directly below photo -->
+              <div class="photo-caption-bar">
+                <div class="photo-caption-name">{{ profile.name }}</div>
+                <div class="photo-caption-role">{{ profile.title }}</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Live Metrics Counter Bar -->
+        <div class="hero-stats-bar reveal-init reveal-fade-up delay-300">
+          <div class="stat-item">
+            <span class="stat-number">{{ profile.years_experience }}</span>
+            <span class="stat-label">Years of Professional Experience</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">{{ profile.projects_completed }}</span>
+            <span class="stat-label">Production Projects Shipped</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">{{ profile.uptime_rate }}</span>
+            <span class="stat-label">API Architecture Reliability</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">{{ profile.code_commits }}</span>
+            <span class="stat-label">Verified Open-Source Commits</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 2: ABOUT ME
+         ========================================================================== -->
+    <section class="section" id="about">
+      <div class="container">
+        
+        <div class="section-header reveal-init reveal-fade-up">
+          <span class="section-tag">// 01. ABOUT ME</span>
+          <h2 class="section-title">
+            Engineering Elegance Meets <span class="gradient-text">Modern Performance</span>
+          </h2>
+          <p class="section-subtitle">
+            A developer who believes scalable architecture and refined design are two sides of the same coin.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          
+          <!-- Left Column: Portrait & Badges -->
+          <div class="about-visual-col reveal-init reveal-fade-right">
+            <div class="avatar-card tilt-effect">
+              <div class="avatar-img-wrapper">
+                <img src="static/assets/avatar.svg" alt="{{ profile.name }} Developer Portrait" loading="lazy">
+              </div>
+              <div class="avatar-quick-badges">
+                <span class="avatar-pill"><i class="fa-solid fa-microchip"></i> Embedded C</span>
+                <span class="avatar-pill"><i class="fa-solid fa-bolt"></i> STM32 &amp; ARM</span>
+                <span class="avatar-pill"><i class="fa-solid fa-wifi"></i> IoT &amp; ESP32</span>
+                <span class="avatar-pill"><i class="fa-brands fa-raspberry-pi"></i> Raspberry Pi</span>
+                <span class="avatar-pill"><i class="fa-solid fa-diagram-project"></i> UART/SPI/I2C</span>
+              </div>
+            </div>
+            <a href="static/assets/Priyanshu_Kumar_Srivastav_Resume.pdf" download="Priyanshu_Kumar_Srivastav_Resume.pdf" class="btn btn-resume" style="width: 100%; margin-top: 16px;">
+              <i class="fa-solid fa-file-arrow-down"></i>
+              <span>Download Official Resume (.PDF)</span>
+            </a>
+          </div>
+
+          <!-- Right Column: Narrative & Values -->
+          <div class="about-content-col reveal-init reveal-fade-left delay-100">
+            <div class="about-narrative">
+              <p class="about-lead">
+                {{ about.headline }}
+              </p>
+              {% for para in about.story_paragraphs %}
+              <p class="about-text">{{ para }}</p>
+              {% endfor %}
+            </div>
+
+            <!-- Philosophy Cards -->
+            <div class="philosophy-grid">
+              {% for highlight in about.highlights %}
+              <div class="philosophy-card">
+                <div class="card-icon-box">
+                  {% if highlight.icon == 'code' %}
+                    <i class="fa-solid fa-code"></i>
+                  {% elif highlight.icon == 'zap' %}
+                    <i class="fa-solid fa-bolt"></i>
+                  {% elif highlight.icon == 'layers' %}
+                    <i class="fa-solid fa-layer-group"></i>
+                  {% else %}
+                    <i class="fa-solid fa-shield-heart"></i>
+                  {% endif %}
+                </div>
+                <h3 class="philosophy-title">{{ highlight.title }}</h3>
+                <p class="philosophy-desc">{{ highlight.description }}</p>
+              </div>
+              {% endfor %}
+            </div>
+
+            <!-- Terminal Info Snippet -->
+            <div class="terminal-snippet-box">
+              {% for item in about.terminal_snippets %}
+              <div class="terminal-line">
+                <span class="prompt-sign">{{ item.prompt }}</span>
+                <span class="prompt-output">{{ item.command }}</span>
+              </div>
+              {% endfor %}
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 3: SKILLS
+         ========================================================================== -->
+    <section class="section" id="skills">
+      <div class="container">
+        
+        <div class="section-header reveal-init reveal-fade-up">
+          <span class="section-tag">// 02. COMPETENCIES</span>
+          <h2 class="section-title">
+            Technical Stack &amp; <span class="gradient-text">Proficiencies</span>
+          </h2>
+          <p class="section-subtitle">
+            A comprehensive, modern engineering toolkit honed through production environments and real-world scale.
+          </p>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="skills-filter-nav reveal-init reveal-fade-up">
+          <button class="skill-tab-btn active" data-filter="all">All Disciplines</button>
+          <button class="skill-tab-btn" data-filter="programming-languages">Programming &amp; Firmware</button>
+          <button class="skill-tab-btn" data-filter="embedded-hardware">Embedded Systems &amp; MCUs</button>
+          <button class="skill-tab-btn" data-filter="tools-protocols">Tools, Protocols &amp; EDA</button>
+        </div>
+
+        <!-- Skills Grid -->
+        <div class="skills-grid">
+          {% for category in skill_categories %}
+          <div class="skill-category-card reveal-init reveal-fade-up" data-category="{{ category.id }}">
+            <div class="category-card-header">
+              <div class="category-icon">
+                {% if category.id == 'python-backend' %}
+                  <i class="fa-brands fa-python"></i>
+                {% elif category.id == 'frontend-ui' %}
+                  <i class="fa-solid fa-code"></i>
+                {% else %}
+                  <i class="fa-solid fa-database"></i>
+                {% endif %}
+              </div>
+              <h3 class="category-title">{{ category.name }}</h3>
+            </div>
+
+            <div class="skill-items-list">
+              {% for skill in category.skills %}
+              <div class="skill-item">
+                <div class="skill-item-header">
+                  <span class="skill-name">{{ skill.name }}</span>
+                  <span class="skill-badge-pill">{{ skill.badge }}</span>
+                </div>
+                <div class="skill-progress-bar-track" title="{{ skill.level }}% Proficiency">
+                  <div class="skill-progress-bar-fill" data-level="{{ skill.level }}"></div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+
+        <!-- Tech Tags Cloud -->
+        <div class="tech-tag-cloud-wrapper reveal-init reveal-fade-up">
+          <div class="tag-cloud-title">Technologies &amp; Protocols In My Active Workflow</div>
+          <div class="tag-cloud-list">
+            {% for tag in tech_tags %}
+            <span class="tech-tag">
+              <i class="fa-solid fa-terminal" style="font-size: 0.7rem; color: var(--purple-400);"></i>
+              {{ tag }}
+            </span>
+            {% endfor %}
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 4: PROJECTS
+         ========================================================================== -->
+    <section class="section" id="projects">
+      <div class="container">
+        
+        <div class="section-header reveal-init reveal-fade-up">
+          <span class="section-tag">// 03. SELECTED WORKS</span>
+          <h2 class="section-title">
+            Featured <span class="gradient-text">Projects</span>
+          </h2>
+          <p class="section-subtitle">
+            Showcasing real-world systems, asynchronous engines, and responsive user experiences.
+          </p>
+        </div>
+
+        <!-- Project Filter Buttons -->
+        <div class="projects-filter-nav reveal-init reveal-fade-up">
+          <button class="project-filter-btn active" data-filter="all">All Projects</button>
+          <button class="project-filter-btn" data-filter="embedded">Embedded &amp; Firmware</button>
+          <button class="project-filter-btn" data-filter="control">STM32 &amp; Control</button>
+          <button class="project-filter-btn" data-filter="iot">IoT &amp; Sensors</button>
+          <button class="project-filter-btn" data-filter="pcb">PCB &amp; Simulation</button>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="projects-grid">
+          {% for project in projects %}
+          <div class="project-card tilt-effect reveal-init reveal-fade-up" data-category="{{ project.category }}">
+            
+            <!-- Mockup Frame -->
+            <div class="project-mockup-frame">
+              <div class="mockup-header-bar">
+                <div class="terminal-dots">
+                  <span class="dot dot-red" style="width: 8px; height: 8px;"></span>
+                  <span class="dot dot-yellow" style="width: 8px; height: 8px;"></span>
+                  <span class="dot dot-green" style="width: 8px; height: 8px;"></span>
+                </div>
+                <span>app://{{ project.id }}.internal</span>
+                <i class="fa-solid fa-shield-halved" style="color: #4ade80;"></i>
+              </div>
+              <div class="mockup-inner-preview" style="background: radial-gradient(circle at 80% 20%, rgba(168, 85, 247, 0.25) 0%, transparent 60%);">
+                <div class="mockup-badge-overlay">
+                  <i class="fa-brands fa-python" style="color: #c084fc;"></i>
+                  <span>{{ project.title.split(' - ')[0] }}</span>
+                </div>
+                <div style="font-family: var(--font-mono); font-size: 0.72rem; color: #a855f7; margin-top: 10px; opacity: 0.85;">
+                  &gt; status: 200 OK • latency: 18ms
+                </div>
+              </div>
+            </div>
+
+            <!-- Card Content -->
+            <div class="project-card-body">
+              <span class="project-category-tag">{{ project.category_badge }}</span>
+              <h3 class="project-card-title">{{ project.title }}</h3>
+              <p class="project-card-desc">{{ project.tagline }}</p>
+
+              <!-- Metrics -->
+              <div class="project-metrics-banner">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>{{ project.stats }}</span>
+              </div>
+
+              <!-- Tech Stack Tags -->
+              <div class="project-tech-tags">
+                {% for tech in project.tech_stack %}
+                <span class="project-mini-tag">{{ tech }}</span>
+                {% endfor %}
+              </div>
+
+              <!-- Card Action Buttons -->
+              <div class="project-card-actions">
+                <button class="btn btn-primary btn-sm btn-quick-view" data-project='{{ project | tojson }}'>
+                  <i class="fa-solid fa-eye"></i>
+                  <span>Quick View</span>
+                </button>
+                <a href="{{ project.github_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" aria-label="GitHub Repository">
+                  <i class="fa-brands fa-github"></i>
+                  <span>Source</span>
+                </a>
+              </div>
+            </div>
+
+          </div>
+          {% endfor %}
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Project Quick View Modal -->
+    <div class="project-modal-backdrop" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="project-modal-window">
+        <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close Project Details Modal">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <span class="modal-category-badge" id="modalCategory">Category</span>
+        <h3 class="modal-title" id="modalTitle">Project Title</h3>
+        <p class="modal-desc" id="modalDesc">Detailed description of the project architecture and outcomes.</p>
+        
+        <div class="modal-highlights-title">
+          <i class="fa-solid fa-microchip" style="color: var(--purple-400);"></i>
+          <span>Engineering Solutions &amp; Features</span>
+        </div>
+        <div class="modal-highlights-list" id="modalHighlightsList"></div>
+
+        <div style="margin-top: 18px; margin-bottom: 8px; font-weight: 600; font-size: 0.9rem; color: #ffffff;">
+          Tech Stack:
+        </div>
+        <div class="project-tech-tags" id="modalTechTags"></div>
+
+        <div class="modal-footer-actions">
+          <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm" id="modalDemoLink">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            <span>Live Demonstration</span>
+          </a>
+          <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" id="modalGithubLink">
+            <i class="fa-brands fa-github"></i>
+            <span>View Source Code</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==========================================================================
+         SECTION 5: EDUCATION & EXPERIENCE (TIMELINE)
+         ========================================================================== -->
+    <section class="section" id="education">
+      <div class="container">
+        
+        <div class="section-header reveal-init reveal-fade-up">
+          <span class="section-tag">// 04. EDUCATION &amp; CAREER</span>
+          <h2 class="section-title">
+            Academic Foundations &amp; <span class="gradient-text">Experience</span>
+          </h2>
+          <p class="section-subtitle">
+            A track record of academic excellence, industry leadership, and continuous certification.
+          </p>
+        </div>
+
+        <!-- Timeline Tab Navigation -->
+        <div class="timeline-nav-tabs reveal-init reveal-fade-up">
+          <button class="timeline-tab-btn active" data-timeline="all">All Milestones</button>
+          <button class="timeline-tab-btn" data-timeline="education">Education &amp; Credentials</button>
+          <button class="timeline-tab-btn" data-timeline="experience">Work Experience</button>
+        </div>
+
+        <!-- Glowing Neon Timeline Structure -->
+        <div class="neon-timeline">
+          
+          <!-- Experience Item 1 -->
+          {% set exp1 = experience[0] %}
+          <div class="timeline-item left reveal-init reveal-fade-right" data-type="experience">
+            <span class="timeline-node"></span>
+            <div class="timeline-card">
+              <div class="timeline-badge-row">
+                <span class="timeline-badge">{{ exp1.badge }}</span>
+                <span class="timeline-period">{{ exp1.period }}</span>
+              </div>
+              <h3 class="timeline-title">{{ exp1.role }}</h3>
+              <div class="timeline-subtitle">{{ exp1.company }}</div>
+              <p class="timeline-description">{{ exp1.description }}</p>
+              <div class="timeline-bullet-list">
+                {% for point in exp1.achievements %}
+                <div class="timeline-bullet">
+                  <i class="fa-solid fa-circle-check"></i>
+                  <span>{{ point }}</span>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+
+          <!-- Education Item 1 -->
+          {% set edu1 = education[0] %}
+          <div class="timeline-item right reveal-init reveal-fade-left" data-type="education">
+            <span class="timeline-node"></span>
+            <div class="timeline-card">
+              <div class="timeline-badge-row">
+                <span class="timeline-badge">{{ edu1.badge }}</span>
+                <span class="timeline-period">{{ edu1.period }}</span>
+              </div>
+              <h3 class="timeline-title">{{ edu1.title }}</h3>
+              <div class="timeline-subtitle">{{ edu1.institution }}</div>
+              <div class="timeline-grade-pill">{{ edu1.grade }}</div>
+              <p class="timeline-description">{{ edu1.description }}</p>
+              <div class="timeline-bullet-list">
+                {% for point in edu1.highlights %}
+                <div class="timeline-bullet">
+                  <i class="fa-solid fa-graduation-cap"></i>
+                  <span>{{ point }}</span>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+
+          <!-- Experience Item 2 -->
+          {% set exp2 = experience[1] %}
+          <div class="timeline-item left reveal-init reveal-fade-right" data-type="experience">
+            <span class="timeline-node"></span>
+            <div class="timeline-card">
+              <div class="timeline-badge-row">
+                <span class="timeline-badge">{{ exp2.badge }}</span>
+                <span class="timeline-period">{{ exp2.period }}</span>
+              </div>
+              <h3 class="timeline-title">{{ exp2.role }}</h3>
+              <div class="timeline-subtitle">{{ exp2.company }}</div>
+              <p class="timeline-description">{{ exp2.description }}</p>
+              <div class="timeline-bullet-list">
+                {% for point in exp2.achievements %}
+                <div class="timeline-bullet">
+                  <i class="fa-solid fa-circle-check"></i>
+                  <span>{{ point }}</span>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+
+          <!-- Certification Item 1 -->
+          {% set cert1 = education[1] %}
+          <div class="timeline-item right reveal-init reveal-fade-left" data-type="education">
+            <span class="timeline-node"></span>
+            <div class="timeline-card">
+              <div class="timeline-badge-row">
+                <span class="timeline-badge">{{ cert1.badge }}</span>
+                <span class="timeline-period">{{ cert1.period }}</span>
+              </div>
+              <h3 class="timeline-title">{{ cert1.title }}</h3>
+              <div class="timeline-subtitle">{{ cert1.institution }}</div>
+              <div class="timeline-grade-pill">{{ cert1.grade }}</div>
+              <p class="timeline-description">{{ cert1.description }}</p>
+              <div class="timeline-bullet-list">
+                {% for point in cert1.highlights %}
+                <div class="timeline-bullet">
+                  <i class="fa-solid fa-award"></i>
+                  <span>{{ point }}</span>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+
+          <!-- Certification Item 2 -->
+          {% set cert2 = education[2] %}
+          <div class="timeline-item left reveal-init reveal-fade-right" data-type="education">
+            <span class="timeline-node"></span>
+            <div class="timeline-card">
+              <div class="timeline-badge-row">
+                <span class="timeline-badge">{{ cert2.badge }}</span>
+                <span class="timeline-period">{{ cert2.period }}</span>
+              </div>
+              <h3 class="timeline-title">{{ cert2.title }}</h3>
+              <div class="timeline-subtitle">{{ cert2.institution }}</div>
+              <div class="timeline-grade-pill">{{ cert2.grade }}</div>
+              <p class="timeline-description">{{ cert2.description }}</p>
+              <div class="timeline-bullet-list">
+                {% for point in cert2.highlights %}
+                <div class="timeline-bullet">
+                  <i class="fa-solid fa-certificate"></i>
+                  <span>{{ point }}</span>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 6: CONTACT
+         ========================================================================== -->
+    <section class="section" id="contact">
+      <div class="container">
+        
+        <div class="section-header reveal-init reveal-fade-up">
+          <span class="section-tag">// 05. REACH OUT</span>
+          <h2 class="section-title">
+            Let's Build Something <span class="gradient-text">Extraordinary</span>
+          </h2>
+          <p class="section-subtitle">
+            Whether you are looking for a senior engineer, seeking consultation, or want to discuss a new venture, my inbox is always open.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          
+          <!-- Left Column: Direct Info Cards -->
+          <div class="contact-info-panel reveal-init reveal-fade-right">
+            
+            <!-- Email Card with Copy Trigger -->
+            <div class="contact-card-box">
+              <div class="contact-card-icon">
+                <i class="fa-solid fa-envelope"></i>
+              </div>
+              <div class="contact-card-details">
+                <div class="contact-card-label">Direct Email</div>
+                <div class="contact-card-value">{{ contact_info.email }}</div>
+                <button class="copy-btn-action copy-trigger" data-copy="{{ contact_info.email }}">
+                  <i class="fa-regular fa-copy"></i>
+                  <span>Copy Address</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Phone / Comms Card -->
+            <div class="contact-card-box">
+              <div class="contact-card-icon">
+                <i class="fa-solid fa-phone"></i>
+              </div>
+              <div class="contact-card-details">
+                <div class="contact-card-label">Direct Line</div>
+                <div class="contact-card-value">{{ contact_info.phone }}</div>
+                <button class="copy-btn-action copy-trigger" data-copy="{{ contact_info.phone }}">
+                  <i class="fa-regular fa-copy"></i>
+                  <span>Copy Phone</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Location & Timezone -->
+            <div class="contact-card-box">
+              <div class="contact-card-icon">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+              <div class="contact-card-details">
+                <div class="contact-card-label">Primary Location</div>
+                <div class="contact-card-value">{{ contact_info.location }}</div>
+                <div style="font-size: 0.82rem; color: var(--text-muted); margin-top: 4px;">
+                  Timezone: {{ contact_info.timezone }}
+                </div>
+              </div>
+            </div>
+
+            <!-- Availability Alert Box -->
+            <div class="availability-alert-box">
+              <div class="alert-status-header">
+                <span class="status-dot"></span>
+                <span>{{ contact_info.status }}</span>
+              </div>
+              <p class="alert-status-text">
+                Typical reply turnaround is {{ contact_info.responseTime }}. Feel free to drop a detailed brief or schedule an introductory technical sync.
+              </p>
+            </div>
+
+          </div>
+
+          <!-- Right Column: Interactive Form -->
+          <div class="contact-form-panel reveal-init reveal-fade-left delay-100">
+            <div class="contact-form-card">
+              <h3 class="form-header-title">Send a Direct Message</h3>
+              <p class="form-header-sub">Connected directly to the Python backend `/api/contact` endpoint.</p>
+
+              <form id="contactForm">
+                <div class="form-group">
+                  <label for="formName" class="form-label">Full Name *</label>
+                  <input type="text" id="formName" class="form-input" placeholder="e.g. Sarah Jenkins" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="formEmail" class="form-label">Email Address *</label>
+                  <input type="email" id="formEmail" class="form-input" placeholder="e.g. sarah@company.com" required>
+                </div>
+
+                <div class="form-group">
+                  <label for="formSubject" class="form-label">Project Type / Inquiry Topic</label>
+                  <select id="formSubject" class="form-select">
+                    <option value="Embedded Systems Opportunity">Embedded Systems / Firmware Role</option>
+                    <option value="IoT & Hardware Development">IoT &amp; Hardware Development Project</option>
+                    <option value="STM32 / Microcontroller Project">STM32 / Microcontroller Programming</option>
+                    <option value="PCB & Prototype Consultation">PCB Design &amp; Prototyping</option>
+                    <option value="General Inquiry">General Technical Inquiry</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="formMessage" class="form-label">Message *</label>
+                  <textarea id="formMessage" class="form-textarea" placeholder="Tell me about your project, goals, or timeline..." maxlength="1000" required></textarea>
+                  <div class="char-counter" id="charCount">0 / 1000</div>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%;">
+                  <i class="fa-solid fa-paper-plane"></i>
+                  <span>Transmit Message</span>
+                </button>
+              </form>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Interactive Toast Notification -->
+  <div class="toast-notification" id="toastNotification" role="alert" aria-live="assertive">
+    <i class="toast-icon fa-solid fa-circle-check"></i>
+    <span id="toastMessage">Your message has been dispatched successfully!</span>
+  </div>
+
+  <!-- Back to Top Floating Button -->
+  <button class="back-to-top-btn" id="backToTop" aria-label="Back to top of page">
+    <i class="fa-solid fa-chevron-up"></i>
+  </button>
+
+  <!-- ==========================================================================
+       FOOTER
+       ========================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#home" class="brand-logo">
+            <span class="logo-bracket">&lt;</span>
+            <span class="logo-text">{{ profile.short_name }}.py</span>
+            <span class="logo-bracket">/&gt;</span>
+          </a>
+          <p class="footer-brand-desc">
+            Electronics & Communication Engineering student passionate about Embedded Systems, IoT hardware solutions, and real-time firmware.
+          </p>
+        </div>
+
+        <div class="footer-links-group">
+          <a href="#home" class="footer-nav-link">Home</a>
+          <a href="#about" class="footer-nav-link">About</a>
+          <a href="#skills" class="footer-nav-link">Skills</a>
+          <a href="#projects" class="footer-nav-link">Projects</a>
+          <a href="#education" class="footer-nav-link">Education</a>
+          <a href="#contact" class="footer-nav-link">Contact</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; {{ current_year }} {{ profile.name }}. All rights reserved.
+        </div>
+        <div class="footer-tech-badge">
+          <i class="fa-brands fa-python"></i>
+          <span>Built with Python &bull; HTML5 &bull; CSS3 &bull; JavaScript</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="static/js/particles.js"></script>
+  <script src="static/js/main.js"></script>
+</body>
+</html>
